@@ -9,6 +9,6 @@ jobs:
   #execute automates test
     steps:
       - name: checkoutheckout code
-        users: actions/checkout@4
+        uses: actions/checkout@4
       - name: Printing Folders
         run: ls
