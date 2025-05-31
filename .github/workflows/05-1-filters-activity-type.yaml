@@ -2,9 +2,6 @@ name: 05 - 1 - Event Filters and Activity Types
 on:
   pull_request:
     inputs:
-      event_type:
-        description: 'Event Type'
-        required: true
         types:
           - opened
           - synchronize
