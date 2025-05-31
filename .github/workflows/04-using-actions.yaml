@@ -1,0 +1,14 @@
+name: 04 - Using Actions
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu:latest
+  # checkout the code from the repo
+  #install dependency for react app
+  #execute automates test
+    steps:
+      - name: checkoutheckout code
+        users: actions/checkout@4
+      - name: Printing Folders
+        run: ls
