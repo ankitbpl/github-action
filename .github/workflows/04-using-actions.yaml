@@ -3,7 +3,7 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu:22.04
   # checkout the code from the repo
   #install dependency for react app
   #execute automates test
