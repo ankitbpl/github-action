@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: 04-using-actiooons/react-app
+        working-directory: 04-using-actooons/react-app
   # checkout the code from the repo
   #install dependency for react app
   #execute automates test
