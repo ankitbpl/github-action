@@ -4,6 +4,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu:latest
+    defaults:
+      run:
+        working-directory: 04-using-actioons/react-app
   # checkout the code from the repo
   #install dependency for react app
   #execute automates test
@@ -16,4 +19,6 @@ jobs:
           node-version: '20.x'
       - name: Install dependency
         run: npm ci
-        working-directory: 04-using-actioons/react-app
+        #working-directory: 04-using-actioons/react-app no need to define here as it define in globle level(top)
+      - name: Run Unit Test
+        run: npm unit test
