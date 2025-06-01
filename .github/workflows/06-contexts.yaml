@@ -1,23 +1,30 @@
-name: 06 - Conetxts
-run-name: 06  - Contexts | DEBUG - ${{inputs.debug}}
+name: 06 - Contexts
+run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
+
 on:
   push:
   workflow_dispatch:
-     inputs:
-        debug:
-          types: boolean
-          default: false
+    inputs:
+      debug:
+        type: boolean
+        default: false
+
 env:
   MY_JOB_VAR: "workflow"
   MY_OVERWRITTEN_VAR: "workflow"
+
 jobs:
   echo-data:
     runs-on: ubuntu-latest
     env:
       MY_VAR: "job"
       MY_OVERWRITTEN_VAR: "job"
+
     steps:
-      - name: Dosplay Information   
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display Information   
         run: |
           echo "The current branch is ${{ github.ref }}"
           echo "The current repository is ${{ github.repository }}"
@@ -26,16 +33,21 @@ jobs:
           echo "The current workflow is ${{ github.workflow }}"
           echo "The current run ID is ${{ github.run_id }}"
           echo "The current run number is ${{ github.run_number }}" 
-      # - name: Retrival Variables
-      #   run: |
-      #     echo "The Variables name is ${{ vars.MY_VAR }}"
-      - name: Retrival env vars
+
+      - name: Retrieve Variables
+        run: |
+          echo "The variable from job-level env: $MY_VAR"
+        env:
+          MY_VAR: ${{ env.MY_VAR }}
+
+      - name: Retrieve env vars
         env:
           MY_OVERWRITTEN_VAR: "step"
         run: |
-          echo "workflow env ${{ env.MY_WORkflow_VAR }}"
-          echo "overwritten env ${{ env.MY_OVERWRITTEN_VAR }}"
-        - name: Retrival env vars1
+          echo "workflow env: $MY_JOB_VAR"
+          echo "overwritten env: $MY_OVERWRITTEN_VAR"
+
+      - name: Retrieve env vars1
         run: |
-          echo "workflow env ${{ env.MY_WORkflow_VAR }}"
-          echo "overwritten env ${{ env.MY_OVERWRITTEN_VAR }}"
+          echo "workflow env: $MY_JOB_VAR"
+          echo "overwritten env: $MY_OVERWRITTEN_VAR"
