@@ -1,0 +1,20 @@
+name: 06 - Conetxts
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  echo-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dosplay Information   
+        run: |
+          echo "The current branch is ${{ github.ref }}"
+          echo "The current repository is ${{ github.repository }}"
+          echo "The current actor is ${{ github.actor }}"
+          echo "The current event name is ${{ github.event_name }}"
+          echo "The current workflow is ${{ github.workflow }}"
+          echo "The current run ID is ${{ github.run_id }}"
+          echo "The current run number is ${{ github.run_number }}" 
+      - name: Retrival Variables
+        run: |
+          echo "The Variables name is ${{ github.MY_VAR }}"
