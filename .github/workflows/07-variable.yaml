@@ -1,0 +1,15 @@
+name: Test
+on:
+  workflow_dispatch
+env:
+  cloud: azure
+jobs:
+  test:
+    runs_on: ubuntu:latest
+    env:
+      greet: hello
+    steps:
+      - name: test this variable
+        run: echo " $greet $first is using $cloud!"
+        env:
+          first: Ankit
