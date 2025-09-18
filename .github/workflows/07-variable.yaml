@@ -10,6 +10,6 @@ jobs:
       greet: hello
     steps:
       - name: test this variable
-        run: echo "$greet $first is using $cloud!"
+        run: echo "$greet $first is using $cloud! is ${{vars.MY_KEY}}"
         env:
           first: Ankit
